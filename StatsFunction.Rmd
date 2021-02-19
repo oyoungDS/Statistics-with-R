@@ -1,0 +1,63 @@
+---
+title: "Statistics Functions"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+#T-test for difference between two means
+#x1 = first mean
+#x2 = second mean
+#s = sample estimate
+#n1 = first sample
+#n2 = second sample
+diff_test <- function(x1,x2,s,n1,n2){
+  return ((x1-x2)/sqrt(s*((1/n1)+(1/n2))))
+}
+
+#Sample estimate for difference between two means
+#n1 = first sample
+#n2 = second sample
+#s1 = first variance
+#s2 = second variance
+s_squared <- function(n1,n2,s1,s2){
+  pool <- ((n1-1)*s1 + (n2-1)*s2)/(n1+n2-2)
+  return(pool)
+}
+
+#Paired-difference test Dependent samples
+#d = difference mean
+#s = standard deviation sample difference
+#n = samples
+pair_test <- function(d,s,n){
+  return (d/(s/sqrt(n)))
+}
+
+#Small sample confidence interval for Paired Difference
+#d = difference mean
+#g = t value
+#s = standard deviation sample difference
+#n = samples
+pair_conf <-function(d, g, s, n) {
+  up <- d + g*(s/sqrt(n))
+  low <- d - g*(s/sqrt(n))
+  return(print(c(low, up)))
+}
+
+#Chi-square variable, inferences for population variance
+# n = samples
+# s = sample variance
+# o = population variance
+chi_var <- function(n,s,o){
+  return(((n-1)*s)/o)
+}
+```
+
+```{r}
+chi_var(40,350,327.61)
+#((1.96*sqrt(0.16))/0.1)^2
+```
+
