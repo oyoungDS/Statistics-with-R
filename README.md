@@ -1,5 +1,5 @@
 # Statistics-with-R
 
-Functions created to make calculating statistics formula much easier.
+Functions I created to make calculating statistics formula much easier for me.
 
 Most R Functions take in Vectors, these ones specifically takes in Mean and Variances.
